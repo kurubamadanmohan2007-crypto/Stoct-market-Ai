@@ -94,7 +94,7 @@ StockAI/
 
 ```bash
 # If using git
-git clone <repo-url>
+git clone https://github.com/kurubamadanmohan2007-crypto/Stoct-market-Ai.git
 cd StockAI
 
 # Or simply download and unzip the project folder
@@ -119,6 +119,36 @@ Open your browser and navigate to:
 ```
 http://127.0.0.1:5000
 ```
+
+## Deploy on Render
+
+The repository includes a `Procfile` and is ready to deploy as a Render Web Service.
+
+1. Push the project to GitHub.
+2. In [Render](https://render.com), choose **New +** and **Web Service**.
+3. Connect the `Stoct-market-Ai` GitHub repository.
+4. Use these settings:
+
+  | Setting | Value |
+  |---|---|
+  | Runtime | Python 3 |
+  | Build Command | `pip install -r requirements.txt` |
+  | Start Command | `gunicorn app:app` |
+  | Instance type | Free (or a suitable paid plan) |
+
+5. Click **Create Web Service** and wait for the first deployment to finish.
+6. Open the generated Render URL. Check `/health`; it should return `{"status":"ok"}`.
+
+Render supplies the port automatically through Gunicorn. No API key or secret is required
+for this project because it uses Yahoo Finance data and falls back to sample data when
+the data source is unavailable.
+
+### Deployment checklist
+
+- Confirm the GitHub branch is `main`.
+- Keep `.env` and other secrets out of Git; `.gitignore` already excludes them.
+- Use the `/health` endpoint for the service health check.
+- Review the financial disclaimer before sharing the public URL.
 
 ---
 

@@ -276,6 +276,11 @@ def get_popular():
     return jsonify(stocks)
 
 
+@app.route("/health")
+def health_check():
+    return jsonify({"status": "ok"})
+
+
 # ─── Entry point ──────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
